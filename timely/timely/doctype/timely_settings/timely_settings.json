@@ -1,0 +1,247 @@
+{
+  "actions": [],
+  "creation": "2026-02-10 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "enabled",
+    "section_connection",
+    "api_url",
+    "username",
+    "password",
+    "column_break_conn",
+    "company_register",
+    "company",
+    "section_sync",
+    "sync_interval",
+    "last_sync",
+    "column_break_sync",
+    "default_shift",
+    "auto_create_employee",
+    "section_leave",
+    "annual_leave_type",
+    "sick_leave_type",
+    "personal_leave_type",
+    "column_break_leave",
+    "paid_leave_type",
+    "parental_leave_type",
+    "training_leave_type",
+    "section_overtime",
+    "regular_overtime_type",
+    "holiday_overtime_type",
+    "column_break_overtime",
+    "night_overtime_type",
+    "weekend_overtime_type",
+    "section_actions",
+    "sync_now",
+    "test_connection"
+  ],
+  "fields": [
+    {
+      "default": "0",
+      "fieldname": "enabled",
+      "fieldtype": "Check",
+      "label": "Enabled"
+    },
+    {
+      "fieldname": "section_connection",
+      "fieldtype": "Section Break",
+      "label": "Connection"
+    },
+    {
+      "default": "https://api.timely.mn",
+      "fieldname": "api_url",
+      "fieldtype": "Data",
+      "label": "API URL",
+      "reqd": 1
+    },
+    {
+      "fieldname": "username",
+      "fieldtype": "Data",
+      "label": "Username",
+      "reqd": 1
+    },
+    {
+      "fieldname": "password",
+      "fieldtype": "Password",
+      "label": "Password",
+      "reqd": 1
+    },
+    {
+      "fieldname": "column_break_conn",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "company_register",
+      "fieldtype": "Data",
+      "label": "Company Register Number",
+      "description": "7-digit Mongolian company registration number",
+      "reqd": 1
+    },
+    {
+      "fieldname": "company",
+      "fieldtype": "Link",
+      "label": "Company",
+      "options": "Company",
+      "reqd": 1
+    },
+    {
+      "fieldname": "section_sync",
+      "fieldtype": "Section Break",
+      "label": "Sync Settings"
+    },
+    {
+      "default": "Daily",
+      "fieldname": "sync_interval",
+      "fieldtype": "Select",
+      "label": "Sync Interval",
+      "options": "Hourly\nDaily\nManual"
+    },
+    {
+      "fieldname": "last_sync",
+      "fieldtype": "Datetime",
+      "label": "Last Sync",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_sync",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "default_shift",
+      "fieldtype": "Link",
+      "label": "Default Shift",
+      "options": "Shift Type"
+    },
+    {
+      "default": "0",
+      "fieldname": "auto_create_employee",
+      "fieldtype": "Check",
+      "label": "Auto Create Employees",
+      "description": "Create new Employee records for unmatched Timely workers"
+    },
+    {
+      "fieldname": "section_leave",
+      "fieldtype": "Section Break",
+      "label": "Leave Type Mapping",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "annual_leave_type",
+      "fieldtype": "Link",
+      "label": "Annual Leave (Ээлжийн амралт)",
+      "options": "Leave Type"
+    },
+    {
+      "fieldname": "sick_leave_type",
+      "fieldtype": "Link",
+      "label": "Sick Leave (Өвчтэй)",
+      "options": "Leave Type"
+    },
+    {
+      "fieldname": "personal_leave_type",
+      "fieldtype": "Link",
+      "label": "Personal Leave (Чөлөө)",
+      "options": "Leave Type"
+    },
+    {
+      "fieldname": "column_break_leave",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "paid_leave_type",
+      "fieldtype": "Link",
+      "label": "Paid Leave (Цалинтай чөлөө)",
+      "options": "Leave Type"
+    },
+    {
+      "fieldname": "parental_leave_type",
+      "fieldtype": "Link",
+      "label": "Parental Leave (Хүүхэд төрсний)",
+      "options": "Leave Type"
+    },
+    {
+      "fieldname": "training_leave_type",
+      "fieldtype": "Link",
+      "label": "Training Leave (Сургалт)",
+      "options": "Leave Type"
+    },
+    {
+      "fieldname": "section_overtime",
+      "fieldtype": "Section Break",
+      "label": "Overtime Type Mapping",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "regular_overtime_type",
+      "fieldtype": "Link",
+      "label": "Regular Overtime (Энгийн)",
+      "options": "Overtime Type"
+    },
+    {
+      "fieldname": "holiday_overtime_type",
+      "fieldtype": "Link",
+      "label": "Holiday Overtime (Баярын)",
+      "options": "Overtime Type"
+    },
+    {
+      "fieldname": "column_break_overtime",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "night_overtime_type",
+      "fieldtype": "Link",
+      "label": "Night Overtime (Шөнийн)",
+      "options": "Overtime Type"
+    },
+    {
+      "fieldname": "weekend_overtime_type",
+      "fieldtype": "Link",
+      "label": "Weekend Overtime (Амралтын)",
+      "options": "Overtime Type"
+    },
+    {
+      "fieldname": "section_actions",
+      "fieldtype": "Section Break",
+      "label": "Actions"
+    },
+    {
+      "fieldname": "sync_now",
+      "fieldtype": "Button",
+      "label": "Sync Now"
+    },
+    {
+      "fieldname": "test_connection",
+      "fieldtype": "Button",
+      "label": "Test Connection"
+    }
+  ],
+  "issingle": 1,
+  "links": [],
+  "modified": "2026-02-10 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Timely",
+  "name": "Timely Settings",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "print": 1,
+      "read": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "read": 1,
+      "role": "HR Manager",
+      "write": 1
+    }
+  ],
+  "sort_field": "creation",
+  "sort_order": "DESC",
+  "states": [],
+  "track_changes": 1
+}

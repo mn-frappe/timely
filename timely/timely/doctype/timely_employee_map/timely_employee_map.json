@@ -1,0 +1,118 @@
+{
+  "actions": [],
+  "autoname": "format:TEM-{timely_worker_id}",
+  "creation": "2026-02-10 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "timely_worker_id",
+    "employee",
+    "employee_name",
+    "column_break_1",
+    "register_number",
+    "timely_division",
+    "timely_position",
+    "section_sync",
+    "last_synced",
+    "sync_status"
+  ],
+  "fields": [
+    {
+      "fieldname": "timely_worker_id",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Timely Worker ID",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "fieldname": "employee",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Employee",
+      "options": "Employee"
+    },
+    {
+      "fieldname": "employee_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Employee Name",
+      "read_only": 1,
+      "fetch_from": "employee.employee_name"
+    },
+    {
+      "fieldname": "column_break_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "register_number",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Register Number",
+      "description": "Mongolian national ID (e.g. АА12345678)"
+    },
+    {
+      "fieldname": "timely_division",
+      "fieldtype": "Data",
+      "label": "Timely Division",
+      "read_only": 1
+    },
+    {
+      "fieldname": "timely_position",
+      "fieldtype": "Data",
+      "label": "Timely Position",
+      "read_only": 1
+    },
+    {
+      "fieldname": "section_sync",
+      "fieldtype": "Section Break",
+      "label": "Sync Info"
+    },
+    {
+      "fieldname": "last_synced",
+      "fieldtype": "Datetime",
+      "label": "Last Synced",
+      "read_only": 1
+    },
+    {
+      "fieldname": "sync_status",
+      "fieldtype": "Select",
+      "label": "Sync Status",
+      "options": "\nMapped\nUnmapped\nError",
+      "read_only": 1
+    }
+  ],
+  "links": [],
+  "modified": "2026-02-10 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Timely",
+  "name": "Timely Employee Map",
+  "naming_rule": "Expression",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "read": 1,
+      "report": 1,
+      "role": "HR Manager",
+      "write": 1
+    }
+  ],
+  "sort_field": "creation",
+  "sort_order": "DESC",
+  "states": [],
+  "title_field": "employee_name",
+  "track_changes": 1
+}

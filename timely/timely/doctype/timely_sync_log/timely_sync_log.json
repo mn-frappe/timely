@@ -1,0 +1,146 @@
+{
+  "actions": [],
+  "autoname": "format:TSL-{####}",
+  "creation": "2026-02-10 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "sync_type",
+    "status",
+    "sync_date",
+    "column_break_1",
+    "date_from",
+    "date_to",
+    "section_results",
+    "total_records",
+    "synced",
+    "skipped",
+    "column_break_results",
+    "errors",
+    "new_employees",
+    "section_details",
+    "details",
+    "error_log"
+  ],
+  "fields": [
+    {
+      "fieldname": "sync_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "label": "Sync Type",
+      "options": "Attendance\nLeave\nOvertime\nEmployee\nFull Sync",
+      "reqd": 1
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "label": "Status",
+      "options": "Queued\nIn Progress\nCompleted\nFailed",
+      "default": "Queued"
+    },
+    {
+      "fieldname": "sync_date",
+      "fieldtype": "Datetime",
+      "in_list_view": 1,
+      "label": "Sync Date",
+      "default": "Now",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "date_from",
+      "fieldtype": "Date",
+      "label": "Date From"
+    },
+    {
+      "fieldname": "date_to",
+      "fieldtype": "Date",
+      "label": "Date To"
+    },
+    {
+      "fieldname": "section_results",
+      "fieldtype": "Section Break",
+      "label": "Results"
+    },
+    {
+      "default": "0",
+      "fieldname": "total_records",
+      "fieldtype": "Int",
+      "label": "Total Records",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "synced",
+      "fieldtype": "Int",
+      "label": "Synced",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "skipped",
+      "fieldtype": "Int",
+      "label": "Skipped",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_results",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "errors",
+      "fieldtype": "Int",
+      "label": "Errors",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "new_employees",
+      "fieldtype": "Int",
+      "label": "New Employees",
+      "read_only": 1
+    },
+    {
+      "fieldname": "section_details",
+      "fieldtype": "Section Break",
+      "label": "Details",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "details",
+      "fieldtype": "Long Text",
+      "label": "Details"
+    },
+    {
+      "fieldname": "error_log",
+      "fieldtype": "Long Text",
+      "label": "Error Log"
+    }
+  ],
+  "links": [],
+  "modified": "2026-02-10 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Timely",
+  "name": "Timely Sync Log",
+  "naming_rule": "Expression",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "read": 1,
+      "role": "System Manager"
+    },
+    {
+      "read": 1,
+      "role": "HR Manager"
+    }
+  ],
+  "sort_field": "creation",
+  "sort_order": "DESC",
+  "states": [],
+  "track_changes": 0
+}
