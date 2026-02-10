@@ -13,6 +13,22 @@ from unittest.mock import MagicMock, patch
 import frappe
 from frappe.tests import IntegrationTestCase
 
+TEST_COMPANY = "_Test Company"
+
+
+def _ensure_test_company():
+	"""Create _Test Company if it doesn't exist (needed in CI)."""
+	if not frappe.db.exists("Company", TEST_COMPANY):
+		company = frappe.get_doc({
+			"doctype": "Company",
+			"company_name": TEST_COMPANY,
+			"abbr": "TST",
+			"default_currency": "MNT",
+			"country": "Mongolia",
+		})
+		company.insert(ignore_permissions=True)
+		frappe.db.commit()
+
 
 # Sample API responses matching Timely.mn documentation
 SAMPLE_LOGIN_RESPONSE = {
@@ -263,6 +279,14 @@ class TestTimelyClient(IntegrationTestCase):
 class TestAttendanceSync(IntegrationTestCase):
 	"""Test attendance sync logic."""
 
+	@classmethod
+	def setUpClass(cls):
+		super().setUpClass()
+		_ensure_test_company()
+
+	def _get_company(self):
+		return frappe.db.get_single_value("Global Defaults", "default_company") or TEST_COMPANY
+
 	def test_sync_attendance_present(self):
 		"""Test present employee creates Present attendance."""
 		from timely.timely.sync import _sync_attendance
@@ -274,7 +298,7 @@ class TestAttendanceSync(IntegrationTestCase):
 			emp = frappe.get_doc({
 				"doctype": "Employee",
 				"first_name": "Test Timely Worker",
-				"company": frappe.db.get_single_value("Global Defaults", "default_company") or "_Test Company",
+				"company": self._get_company(),
 				"status": "Active",
 			})
 			emp.insert(ignore_permissions=True)
@@ -325,7 +349,7 @@ class TestAttendanceSync(IntegrationTestCase):
 			emp = frappe.get_doc({
 				"doctype": "Employee",
 				"first_name": "Test Timely Worker2",
-				"company": frappe.db.get_single_value("Global Defaults", "default_company") or "_Test Company",
+				"company": self._get_company(),
 				"status": "Active",
 			})
 			emp.insert(ignore_permissions=True)
@@ -396,7 +420,7 @@ class TestAttendanceSync(IntegrationTestCase):
 			emp = frappe.get_doc({
 				"doctype": "Employee",
 				"first_name": "Test Timely Dup",
-				"company": frappe.db.get_single_value("Global Defaults", "default_company") or "_Test Company",
+				"company": self._get_company(),
 				"status": "Active",
 			})
 			emp.insert(ignore_permissions=True)
@@ -435,7 +459,7 @@ class TestAttendanceSync(IntegrationTestCase):
 			emp = frappe.get_doc({
 				"doctype": "Employee",
 				"first_name": "Test Timely Late",
-				"company": frappe.db.get_single_value("Global Defaults", "default_company") or "_Test Company",
+				"company": self._get_company(),
 				"status": "Active",
 			})
 			emp.insert(ignore_permissions=True)
@@ -472,6 +496,11 @@ class TestAttendanceSync(IntegrationTestCase):
 class TestEmployeeMapping(IntegrationTestCase):
 	"""Test employee resolution logic."""
 
+	@classmethod
+	def setUpClass(cls):
+		super().setUpClass()
+		_ensure_test_company()
+
 	def test_resolve_by_attendance_device_id(self):
 		"""Test matching via attendance_device_id."""
 		from timely.timely.sync import _resolve_employee
@@ -482,7 +511,7 @@ class TestEmployeeMapping(IntegrationTestCase):
 			emp = frappe.get_doc({
 				"doctype": "Employee",
 				"first_name": "Test Timely DevID",
-				"company": frappe.db.get_single_value("Global Defaults", "default_company") or "_Test Company",
+				"company": frappe.db.get_single_value("Global Defaults", "default_company") or TEST_COMPANY,
 				"status": "Active",
 				"attendance_device_id": "TM-9999",
 			})
