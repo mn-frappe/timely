@@ -49,9 +49,9 @@ def run_daily_sync(target_date=None):
 		error_log = []
 
 		for record in records:
+			worker_id = str(record.get("workerId"))
+			worker_name = record.get("workerName", "Unknown")
 			try:
-				worker_id = str(record.get("workerId"))
-				worker_name = record.get("workerName", "Unknown")
 				register = record.get("register", "")
 
 				# Resolve employee mapping

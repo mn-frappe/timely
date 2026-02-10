@@ -46,9 +46,9 @@ def sync_overtime(date_from, date_to):
 		error_log = []
 
 		for record in records:
+			worker_id = str(record.get("workerId"))
+			worker_name = record.get("workerName", "Unknown")
 			try:
-				worker_id = str(record.get("workerId"))
-				worker_name = record.get("workerName", "Unknown")
 
 				# Get employee mapping
 				employee = frappe.db.get_value(
