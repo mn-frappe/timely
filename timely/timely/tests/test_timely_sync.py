@@ -16,20 +16,6 @@ from frappe.tests import IntegrationTestCase
 TEST_COMPANY = "_Test Company"
 
 
-def _ensure_test_company():
-	"""Create _Test Company if it doesn't exist (needed in CI)."""
-	if not frappe.db.exists("Company", TEST_COMPANY):
-		company = frappe.get_doc({
-			"doctype": "Company",
-			"company_name": TEST_COMPANY,
-			"abbr": "TST",
-			"default_currency": "MNT",
-			"country": "Mongolia",
-		})
-		company.insert(ignore_permissions=True)
-		frappe.db.commit()
-
-
 # Sample API responses matching Timely.mn documentation
 SAMPLE_LOGIN_RESPONSE = {
 	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.test-token"
@@ -279,11 +265,6 @@ class TestTimelyClient(IntegrationTestCase):
 class TestAttendanceSync(IntegrationTestCase):
 	"""Test attendance sync logic."""
 
-	@classmethod
-	def setUpClass(cls):
-		super().setUpClass()
-		_ensure_test_company()
-
 	def _get_company(self):
 		return frappe.db.get_single_value("Global Defaults", "default_company") or TEST_COMPANY
 
@@ -495,11 +476,6 @@ class TestAttendanceSync(IntegrationTestCase):
 
 class TestEmployeeMapping(IntegrationTestCase):
 	"""Test employee resolution logic."""
-
-	@classmethod
-	def setUpClass(cls):
-		super().setUpClass()
-		_ensure_test_company()
 
 	def test_resolve_by_attendance_device_id(self):
 		"""Test matching via attendance_device_id."""

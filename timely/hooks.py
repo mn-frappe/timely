@@ -26,6 +26,11 @@ fixtures = [
 
 after_install = "timely.timely.install.after_install"
 
+# Testing
+# -------
+
+before_tests = "timely.timely.tests.test_utils.before_tests"
+
 # Scheduled Tasks
 # ---------------
 
