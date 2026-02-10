@@ -281,6 +281,9 @@ class TestAttendanceSync(IntegrationTestCase):
 				"first_name": "Test Timely Worker",
 				"company": self._get_company(),
 				"status": "Active",
+				"gender": "Male",
+				"date_of_birth": "1990-01-01",
+				"date_of_joining": "2020-01-01",
 			})
 			emp.insert(ignore_permissions=True)
 
@@ -332,6 +335,9 @@ class TestAttendanceSync(IntegrationTestCase):
 				"first_name": "Test Timely Worker2",
 				"company": self._get_company(),
 				"status": "Active",
+				"gender": "Female",
+				"date_of_birth": "1991-02-02",
+				"date_of_joining": "2020-02-01",
 			})
 			emp.insert(ignore_permissions=True)
 
@@ -403,6 +409,9 @@ class TestAttendanceSync(IntegrationTestCase):
 				"first_name": "Test Timely Dup",
 				"company": self._get_company(),
 				"status": "Active",
+				"gender": "Male",
+				"date_of_birth": "1992-03-03",
+				"date_of_joining": "2020-03-01",
 			})
 			emp.insert(ignore_permissions=True)
 
@@ -442,6 +451,9 @@ class TestAttendanceSync(IntegrationTestCase):
 				"first_name": "Test Timely Late",
 				"company": self._get_company(),
 				"status": "Active",
+				"gender": "Male",
+				"date_of_birth": "1993-04-04",
+				"date_of_joining": "2020-04-01",
 			})
 			emp.insert(ignore_permissions=True)
 
@@ -490,6 +502,9 @@ class TestEmployeeMapping(IntegrationTestCase):
 				"company": frappe.db.get_single_value("Global Defaults", "default_company") or TEST_COMPANY,
 				"status": "Active",
 				"attendance_device_id": "TM-9999",
+				"gender": "Male",
+				"date_of_birth": "1994-05-05",
+				"date_of_joining": "2020-05-01",
 			})
 			emp.insert(ignore_permissions=True)
 
